@@ -1,0 +1,30 @@
+{
+  "text": "Create a simple Python project with a main script and a utility script inside a utilities folder. The main script should read a file and count the number of lines. The utility script should contain a function to double the line count.",
+  "file_structure": {
+    "main.py": "",
+    "utilities": {
+      "utility.py": ""
+    }
+  },
+  "code": {
+    "main.py": "with open('input_file.txt', 'r') as file:\n    lines = file.readlines()\n    line_count = len(lines)\n    print(f'Number of lines: {line_count}')",
+    "utilities/utility.py": "def double_count(count):\n    return count * 2"
+  }
+}
+{
+  "text": "Create a basic web application with an HTML page, a CSS file inside a styles folder, and a JavaScript file inside a scripts folder. The HTML page should have a title and a heading. The CSS file should set the background color to light blue. The JavaScript file should display an alert when the page loads.",
+  "file_structure": {
+    "index.html": "",
+    "styles": {
+      "main.css": ""
+    },
+    "scripts": {
+      "main.js": ""
+    }
+  },
+  "code": {
+    "index.html": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <link rel=\"stylesheet\" href=\"styles/main.css\">\n    <script src=\"scripts/main.js\"></script>\n    <title>Basic Web Application</title>\n</head>\n<body>\n    <h1>Welcome to the Basic Web Application</h1>\n</body>\n</html>",
+    "styles/main.css": "body {\n    background-color: lightblue;\n}",
+    "scripts/main.js": "document.addEventListener('DOMContentLoaded', function() {\n    alert('Page has loaded!');\n});"
+  }
+}
