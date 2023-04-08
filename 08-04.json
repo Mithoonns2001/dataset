@@ -310,7 +310,7 @@
     "templates/index.html": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Real-Time Stock Prices</title>\n</head>\n<body>\n    <h1>Real-Time Stock Prices</h1>\n    <p>Enter a stock symbol to start streaming:</p>\n    <form onsubmit=\"startStreaming(); return false;\">\n        <input type=\"text\" id=\"symbol\" name=\"symbol\" placeholder=\"e.g. AAPL\" required>\n        <button type=\"submit\">Start Streaming</button>\n    </form>\n    <div id=\"stock-price\"></div>\n    <script>\n        const stockPriceElement = document.getElementById('stock-price');\n        let eventSource;\n        function startStreaming() {\n            const symbol = document.getElementById('symbol').value.toUpperCase();\n            eventSource = new EventSource(`/stream/${symbol}`);\n            eventSource.addEventListener('message', function(event) {\n                stockPriceElement.textContent = event.data;\n            });\n        }\n    </script>\n</body>\n</html>"
   }
 }
-#########
+
 {
   "text": "Create a Flask application that allows users to join a chat room and send real-time messages to each other. The chat messages should be displayed on the webpage as they are sent, without requiring the user to refresh the page.",
   "file_structure": {
@@ -330,7 +330,7 @@
     "static/script.js": "const joinButton = document.getElementById('join-button');\nconst messageForm = document.getElementById('message-form');\nconst messageInput = document.getElementById('message-input');\nconst chatMessages = document.getElementById('chat-messages');\n\n// Connect to the server\nconst socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);\n\n// Define a function to add a chat message to the webpage\nfunction addMessage(username, message) {\n const messageElement = document.createElement('p');\n messageElement.innerHTML = ${username}: ${message};\n chatMessages.appendChild(messageElement);\n}\n\n// Add a click event listener to the Join Room button\njoinButton.addEventListener('click', function() {\n const username = document.getElementById('username').value;\n const room = document.getElementById('room').value;\n socket.emit('join', {'username': username, 'room': room});\n});\n\n// Add a submit event listener to the Message form\nmessageForm.addEventListener('submit', function(event) {\n event.preventDefault();\n const message = messageInput.value;\n const username = document.getElementById('username').value;\n const room = document.getElementById('room').value;\n socket.emit('message', {'message': message, 'username': username, 'room': room});\n messageInput.value = '';\n});\n\n// Define a socket.io event for when a message is received\nsocket.on('message', function(data) {\n addMessage(data.username, data.message);\n});"
 }
 }
-###########
+
 {
   "text": "Create a Flask application that streams real-time sentiment analysis of tweets containing a specified hashtag. The sentiment analysis should be displayed on a webpage as the tweets are analyzed, without requiring the user to refresh the page.",
   "file_structure": {
